@@ -81,3 +81,12 @@ class Cart:
 
     def get_total_price(self):
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+
+    def update_quantity(self, product_id, quantity):
+        product_id = str(product_id)
+        if product_id in self.cart:
+            if quantity > 0:
+                self.cart[product_id]['quantity'] = quantity
+            else:
+                del self.cart[product_id]
+        self.save()
