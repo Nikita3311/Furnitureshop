@@ -1,3 +1,4 @@
+{% load cart_extras %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -47,7 +48,7 @@
         </table>
 
         <div class="text-end">
-            <h4>Итого: {{ cart_total }} ₽</h4>
+            <h4>Итого: {{ cart|sum_total }} ₽</h4>
             <button class="btn btn-success">Оформить заказ</button>
         </div>
     {% else %}

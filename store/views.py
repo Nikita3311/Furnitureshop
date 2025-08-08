@@ -15,7 +15,7 @@ def product_list(request):
 
 def cart_detail(request):
     cart = Cart(request)
-    return render(request, 'store/cart.html',  {'cart_items': list(cart)})
+    return render(request, 'store/cart.html',  {'cart': cart, 'cart_items': list(cart)})
 
 def add_to_cart(request, product_id):
     cart = Cart(request)
@@ -29,7 +29,7 @@ def remove_from_cart(request, product_id):
     return redirect('cart_detail')
 
 
-
+@require_POST
 def update_cart_quantity(request, product_id):
     cart = Cart(request)
     action = request.POST.get('action')
